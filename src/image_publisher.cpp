@@ -25,36 +25,45 @@ int main(int argc, char** argv)
   cv::Mat image_depth; //= cv::imread(ossDepth.str(), CV_LOAD_IMAGE_ANYDEPTH);
   std::string path2sequenceRGB, path2sequenceDepth, path2sequence;
 
-  int seq_num = 1; //change that!
+  int seq_num = 4; //change that!
 
+  path2sequence = "/media/mikolajnowaczyk/dysk zewnetrzny/dataset/rgbd_dataset_freiburg3_long_office_household/";
   path2sequence = "/media/mikolajnowaczyk/dysk zewnetrzny/icl/living_room_" + std::to_string(seq_num) + "/";
 
   path2sequenceRGB = path2sequence + "rgb/";
   path2sequenceDepth = path2sequence + "depth/";
 
-  int limit = 100;
-  switch (seq_num)
-        {
-           case 1:
-              limit = 1508;
-              break;
-           case 2:
-              limit = 965;
-              break;
-           case 3:
-              limit = 880;
-              break;
-           case 4:
-              limit = 1240;
-              break;
-            default:
-              limit = 800;
-        }
-  //choose
+  int start = 0;
+  int end = 1240;
+//  int limit = 100;
+//  switch (seq_num)
+//        {
+//           case 1:
+//              limit = 1508;
+//              break;
+//           case 2:
+//              limit = 965;
+//              break;
+//           case 3:
+//              limit = 880;
+//              break;
+//           case 4:
+//              limit = 1240;
+//              break;
+//            default:
+//              limit = 800;
+//        }
   ros::Rate loop_rate(30);
-  int i = 0;
-  while (nh.ok() && (i < limit))
+  int i = start;
+  while (nh.ok() && (i < end))
   {
+      //TUM
+//      std::ostringstream ossRGB;  ossRGB.str(std::string());
+//      ossRGB << path2sequence << "rgb_" << std::setfill('0') << std::setw(5) << i << ".png";
+//      std::ostringstream ossDepth;  ossDepth.str(std::string());
+//      ossDepth << path2sequence << "depth_" << std::setfill('0') << std::setw(5) << i << ".png";
+
+      //ICL
       std::ostringstream ossRGB;  ossRGB.str(std::string());
       ossRGB << path2sequenceRGB << i << ".png";
       std::ostringstream ossDepth;  ossDepth.str(std::string());

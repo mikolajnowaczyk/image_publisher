@@ -36,10 +36,10 @@ endif()
 ## catkin specific configuration ##
 ###################################
 catkin_package(
-  INCLUDE_DIRS include
+  #INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS roscpp std_msgs sensor_msgs rviz cv_bridge
-  DEPENDS
+  #DEPENDS
 )
 
 ###########

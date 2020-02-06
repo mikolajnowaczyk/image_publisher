@@ -23,15 +23,37 @@ int main(int argc, char** argv)
   image_transport::Publisher pub_rgb = it_rgb.advertise("/camera/rgb/image_raw", 1);
   cv::Mat image_rgb; //= cv::imread(argv[1], CV_LOAD_IMAGE_COLOR);
   cv::Mat image_depth; //= cv::imread(ossDepth.str(), CV_LOAD_IMAGE_ANYDEPTH);
-  std::string path2sequenceRGB, path2sequenceDepth;
+  std::string path2sequenceRGB, path2sequenceDepth, path2sequence;
 
-  path2sequenceRGB = "/media/mikolaj/dysk zewnetrzny/icl/living_room_1/rgb/";
-  path2sequenceDepth = "/media/mikolaj/dysk zewnetrzny/icl/living_room_1//depth/";
+  int seq_num = 1; //change that!
 
+  path2sequence = "/media/mikolajnowaczyk/dysk zewnetrzny/icl/living_room_" + std::to_string(seq_num) + "/";
+
+  path2sequenceRGB = path2sequence + "rgb/";
+  path2sequenceDepth = path2sequence + "depth/";
+
+  int limit = 100;
+  switch (seq_num)
+        {
+           case 1:
+              limit = 1508;
+              break;
+           case 2:
+              limit = 965;
+              break;
+           case 3:
+              limit = 880;
+              break;
+           case 4:
+              limit = 1240;
+              break;
+            default:
+              limit = 800;
+        }
   //choose
   ros::Rate loop_rate(30);
   int i = 0;
-  while (nh.ok())
+  while (nh.ok() && (i < limit))
   {
       std::ostringstream ossRGB;  ossRGB.str(std::string());
       ossRGB << path2sequenceRGB << i << ".png";
@@ -67,4 +89,5 @@ int main(int argc, char** argv)
       ros::spinOnce();
       loop_rate.sleep();
   }
+  cout<<"Seq done"<<endl;
 }

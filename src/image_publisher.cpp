@@ -27,8 +27,8 @@ int main(int argc, char** argv)
 
   int seq_num = 4; //change that!
 
-  path2sequence = "/media/mikolajnowaczyk/dysk zewnetrzny/dataset/rgbd_dataset_freiburg3_long_office_household/";
-  path2sequence = "/media/mikolajnowaczyk/dysk zewnetrzny/icl/living_room_" + std::to_string(seq_num) + "/";
+  path2sequence = "/media/mikolaj/dysk zewnetrzny/dataset/rgbd_dataset_freiburg3_long_office_household/";
+  path2sequence = "/media/mikolaj/dysk zewnetrzny/icl/living_room_" + std::to_string(seq_num) + "/";
 
   path2sequenceRGB = path2sequence + "rgb/";
   path2sequenceDepth = path2sequence + "depth/";
